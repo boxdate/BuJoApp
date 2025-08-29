@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit
 from PyQt6.QtCore import Qt
 
 class EditableLabel(QWidget):
@@ -69,16 +69,44 @@ class MainWindow(QWidget):
         # Set minimum window size
         self.setMinimumSize(1280, 800)
 
-        main_layout = QVBoxLayout(self)
+        main_layout = QHBoxLayout(self)
 
-        # Add an instance of EditableLabel
-        self.editable_task = EditableLabel("My first task")
-        main_layout.addWidget(self.editable_task)
+        # Left Page (Yesterday's Reflection)
+        self.left_page = QWidget()
+        self.left_page_layout = QVBoxLayout(self.left_page)
+        self.left_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        self.editable_memo = EditableLabel("This is a reflection memo.")
-        main_layout.addWidget(self.editable_memo)
+        self.left_page_date = QLabel("2025年8月29日 (金)") # Placeholder for date
+        self.left_page_date.setStyleSheet("font-size: 16px; font-weight: bold;")
+        self.left_page_layout.addWidget(self.left_page_date)
 
-        main_layout.addStretch() # Push content to top
+        self.left_page_task = EditableLabel("昨日のタスク")
+        self.left_page_layout.addWidget(self.left_page_task)
+
+        self.left_page_memo = EditableLabel("昨日のふりかえりメモ")
+        self.left_page_layout.addWidget(self.left_page_memo)
+
+        self.left_page_layout.addStretch()
+
+        # Right Page (Today's Record)
+        self.right_page = QWidget()
+        self.right_page_layout = QVBoxLayout(self.right_page)
+        self.right_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        self.right_page_date = QLabel("2025年8月30日 (土)") # Placeholder for date
+        self.right_page_date.setStyleSheet("font-size: 16px; font-weight: bold;")
+        self.right_page_layout.addWidget(self.right_page_date)
+
+        self.right_page_task = EditableLabel("今日のタスク")
+        self.right_page_layout.addWidget(self.right_page_task)
+
+        self.right_page_memo = EditableLabel("今日のふりかえりメモ")
+        self.right_page_layout.addWidget(self.right_page_memo)
+
+        self.right_page_layout.addStretch()
+
+        main_layout.addWidget(self.left_page)
+        main_layout.addWidget(self.right_page)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
