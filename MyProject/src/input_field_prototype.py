@@ -73,6 +73,7 @@ class MainWindow(QWidget):
 
         # Left Page (Yesterday's Reflection)
         self.left_page = QWidget()
+        self.left_page.setStyleSheet("background-color: #FDFDF5; border: 1px solid #E0E0D8;") # Light paper color with subtle border
         self.left_page_layout = QVBoxLayout(self.left_page)
         self.left_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
@@ -91,6 +92,7 @@ class MainWindow(QWidget):
 
         # Right Page (Today's Record)
         self.right_page = QWidget()
+        self.right_page.setStyleSheet("background-color: #FDFDF5; border: 1px solid #E0E0D8;") # Light paper color with subtle border
         self.right_page_layout = QVBoxLayout(self.right_page)
         self.right_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
