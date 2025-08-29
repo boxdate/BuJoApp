@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QFrame
 from PyQt6.QtCore import Qt
 
 class EditableLabel(QWidget):
@@ -108,6 +108,14 @@ class MainWindow(QWidget):
         self.right_page_layout.addStretch(1) # Push content to top
 
         main_layout.addWidget(self.left_page)
+
+        # Add a vertical separator line
+        self.separator_line = QFrame()
+        self.separator_line.setFrameShape(QFrame.Shape.VLine)
+        self.separator_line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.separator_line.setLineWidth(2) # Adjust thickness as needed
+        main_layout.addWidget(self.separator_line)
+
         main_layout.addWidget(self.right_page)
 
 if __name__ == "__main__":
