@@ -64,7 +64,10 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Input Field Prototype")
-        self.setGeometry(100, 100, 400, 200)
+        # Set recommended window size
+        self.resize(1920, 1080)
+        # Set minimum window size
+        self.setMinimumSize(1280, 800)
 
         main_layout = QVBoxLayout(self)
 
