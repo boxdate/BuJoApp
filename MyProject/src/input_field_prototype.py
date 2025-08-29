@@ -82,11 +82,12 @@ class MainWindow(QWidget):
 
         self.left_page_task = EditableLabel("昨日のタスク")
         self.left_page_layout.addWidget(self.left_page_task)
+        self.left_page_layout.addStretch(1) # Push memo down
 
         self.left_page_memo = EditableLabel("昨日のふりかえりメモ")
         self.left_page_layout.addWidget(self.left_page_memo)
 
-        self.left_page_layout.addStretch()
+        self.left_page_layout.addStretch(1) # Push content to top
 
         # Right Page (Today's Record)
         self.right_page = QWidget()
@@ -99,11 +100,12 @@ class MainWindow(QWidget):
 
         self.right_page_task = EditableLabel("今日のタスク")
         self.right_page_layout.addWidget(self.right_page_task)
+        self.right_page_layout.addStretch(1) # Push memo down
 
         self.right_page_memo = EditableLabel("今日のふりかえりメモ")
         self.right_page_layout.addWidget(self.right_page_memo)
 
-        self.right_page_layout.addStretch()
+        self.right_page_layout.addStretch(1) # Push content to top
 
         main_layout.addWidget(self.left_page)
         main_layout.addWidget(self.right_page)
