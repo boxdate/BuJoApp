@@ -26,6 +26,26 @@ class EditableLabel(QWidget):
         self.layout.addWidget(self.edit_field)
 
         self.setFixedSize(200, 30) # Example fixed size for the widget
+        self._setup_styles()
+
+    def _setup_styles(self):
+        # Apply styles based on requirements
+        # For QLabel (display mode): no border, text looks like handwriting
+        self.display_label.setStyleSheet("""
+            QLabel {
+                border: none;
+                font-family: "Comic Sans MS", cursive; /* Placeholder for handwriting font */
+                font-size: 14px;
+            }
+        """)
+        # For QLineEdit (edit mode): visible border, text looks like handwriting
+        self.edit_field.setStyleSheet("""
+            QLineEdit {
+                border: 1px solid #888; /* Visible border */
+                font-family: "Comic Sans MS", cursive; /* Placeholder for handwriting font */
+                font-size: 14px;
+            }
+        """)
 
     def on_label_clicked(self, event):
         # Switch to edit mode
