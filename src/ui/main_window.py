@@ -15,7 +15,15 @@ class MainWindow(QWidget):
 
         # Left Page (Yesterday's Reflection)
         self.left_page = QWidget()
-        self.left_page.setStyleSheet("background-color: #FDFDF5; border: 1px solid #E0E0D8;") # Light paper color with subtle border
+        self.left_page.setStyleSheet("""
+            background-color: #FDFDF5;
+            border-top: 1px solid #E0E0D8;
+            border-left: 1px solid #E0E0D8;
+            border-bottom: 2px solid #D0D0C8; /* 影の表現 */
+            border-right: 2px solid #D0D0C8;  /* 影の表現 */
+            border-radius: 8px; /* 角の丸み */
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #FDFDF5, stop:0.5 #FCFCF0, stop:1 #FDFDF5); /* ざらつき感の擬似表現 */
+        """) # Light paper color with subtle border
         self.left_page_layout = QVBoxLayout(self.left_page)
         self.left_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
@@ -34,7 +42,15 @@ class MainWindow(QWidget):
 
         # Right Page (Today's Record)
         self.right_page = QWidget()
-        self.right_page.setStyleSheet("background-color: #FDFDF5; border: 1px solid #E0E0D8;") # Light paper color with subtle border
+        self.right_page.setStyleSheet("""
+            background-color: #FDFDF5;
+            border-top: 1px solid #E0E0D8;
+            border-left: 1px solid #E0E0D8;
+            border-bottom: 2px solid #D0D0C8; /* 影の表現 */
+            border-right: 2px solid #D0D0C8;  /* 影の表現 */
+            border-radius: 8px; /* 角の丸み */
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #FDFDF5, stop:0.5 #FCFCF0, stop:1 #FDFDF5); /* ざらつき感の擬似表現 */
+        """) # Light paper color with subtle border
         self.right_page_layout = QVBoxLayout(self.right_page)
         self.right_page_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
