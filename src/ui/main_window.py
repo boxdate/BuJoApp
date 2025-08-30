@@ -7,7 +7,7 @@ class MainWindow(QWidget):
         super().__init__()
         self.setWindowTitle("Input Field Prototype")
         # Set recommended window size
-        self.resize(1920, 1080)
+        self.resize(1280, 800)
         # Set minimum window size
         self.setMinimumSize(1280, 800)
 
