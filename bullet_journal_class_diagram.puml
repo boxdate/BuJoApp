@@ -1,0 +1,77 @@
+@startuml
+' 抽象クラスまたはインターフェースの定義
+abstract class Entry {
+    + id: String
+    + content: String
+    + creation_date: Date
+    + last_modified_date: Date
+    --
+    + edit_content(newContent: String): void
+    + delete(): void
+}
+
+' Entryを継承する具体的なエントリタイプ
+class Task {
+    + is_completed: Boolean
+    + due_date: Date (optional)
+    + priority: Integer (optional)
+    --
+    + mark_as_completed(): void
+    + set_due_date(date: Date): void
+}
+
+class Event {
+    + start_datetime: DateTime
+    + end_datetime: DateTime (optional)
+    + location: String (optional)
+    --
+    + set_time_range(start: DateTime, end: DateTime): void
+    + set_location(loc: String): void
+}
+
+class Note {
+    ' Entryのcontentで十分
+}
+
+' コレクションクラス
+class Collection {
+    + name: String
+    + type: String (Daily, Monthly, Custom)
+    + start_date: Date (optional)
+    + end_date: Date (optional)
+    --
+    + add_entry(entry: Entry): void
+    + remove_entry(entry: Entry): void
+    + get_entries_by_date(date: Date): List<Entry>
+}
+
+' バレットジャーナル本体
+class BulletJournal {
+    + name: String
+    + creation_date: Date
+    --
+    + add_collection(collection: Collection): void
+    + remove_collection(collection: Collection): void
+}
+
+' タグクラス
+class Tag {
+    + name: String
+    + color: String (optional)
+}
+
+' 関係性の定義
+
+' 汎化 (継承)
+Entry <|-- Task
+Entry <|-- Event
+Entry <|-- Note
+
+' 集約/コンポジション (has-a 関係)
+BulletJournal "1" *-- "0..*" Collection : contains
+Collection "1" *-- "0..*" Entry : contains
+
+' 関連 (多対多)
+Entry "0..*" -- "0..*" Tag : tags
+
+@enduml
