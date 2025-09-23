@@ -1,32 +1,32 @@
 @startuml
 ' 抽象クラスまたはインターフェースの定義
 abstract class Entry {
-    + id: String
-    + content: String
-    + creation_date: Date
-    + last_modified_date: Date
+    + id: str
+    + content: str
+    + creation_date: datetime.date
+    + last_modified_date: datetime.date
     --
-    + edit_content(newContent: String): void
+    + edit_content(newContent: str): void
     + delete(): void
 }
 
 ' Entryを継承する具体的なエントリタイプ
 class Task {
-    + is_completed: Boolean
-    + due_date: Date (optional)
-    + priority: Integer (optional)
+    + is_completed: bool
+    + due_date: Optional[datetime.date]
+    + priority: Optional[TaskPriority]
     --
     + mark_as_completed(): void
-    + set_due_date(date: Date): void
+    + set_due_date(date: datetime.date): void
 }
 
 class Event {
-    + start_datetime: DateTime
-    + end_datetime: DateTime (optional)
-    + location: String (optional)
+    + start_datetime: datetime.datetime
+    + end_datetime: Optional[datetime.datetime]
+    + location: Optional[str]
     --
-    + set_time_range(start: DateTime, end: DateTime): void
-    + set_location(loc: String): void
+    + set_time_range(start: datetime.datetime, end: datetime.datetime): void
+    + set_location(loc: str): void
 }
 
 class Note {
@@ -35,20 +35,20 @@ class Note {
 
 ' コレクションクラス
 class Collection {
-    + name: String
-    + type: String (Daily, Monthly, Custom)
-    + start_date: Date (optional)
-    + end_date: Date (optional)
+    + name: str
+    + type: CollectionType
+    + start_date: Optional[datetime.date]
+    + end_date: Optional[datetime.date]
     --
     + add_entry(entry: Entry): void
     + remove_entry(entry: Entry): void
-    + get_entries_by_date(date: Date): List<Entry>
+    + get_entries_by_date(date: datetime.date): List<Entry>
 }
 
 ' バレットジャーナル本体
 class BulletJournal {
-    + name: String
-    + creation_date: Date
+    + name: str
+    + creation_date: datetime.date
     --
     + add_collection(collection: Collection): void
     + remove_collection(collection: Collection): void
@@ -56,8 +56,21 @@ class BulletJournal {
 
 ' タグクラス
 class Tag {
-    + name: String
-    + color: String (optional)
+    + name: str
+    + color: Optional[str]
+}
+
+' 列挙型の定義
+enum TaskPriority {
+    LOW
+    MEDIUM
+    HIGH
+}
+
+enum CollectionType {
+    DAILY
+    MONTHLY
+    CUSTOM
 }
 
 ' 関係性の定義
